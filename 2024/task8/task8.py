@@ -2,22 +2,15 @@ main_map = []
 answer = set()
 
 def find_new_points(x1,y1,x2,y2):
-    dx = abs(x2 - x1)
-    dy = abs(y2 - y1)
+    dx = x2 - x1
+    dy = y2 - y1
 
-    if x1 < x2: # первая точка по иксу выше второй
-        x3 = x1 - dx
-        x4 = x2 + dx
-    else: # первая точка по иксу ниже второй
-        x3 = x1 + dx
-        x4 = x2 - dx
+    # к одной точке прибавляем дельту, из другой вычитаем
+    x3 = x2 + dx
+    y3 = y2 + dy
 
-    if y1 < y2: # первая точка по игреку левее второй
-        y3 = y1 - dy
-        y4 = y2 + dy
-    else: # первая точка по игреку правее второй
-        y3 = y1 + dy
-        y4 = y2 - dy
+    x4 = x1 - dx
+    y4 = y1 - dy
 
     return (x3,y3,x4,y4)
 
