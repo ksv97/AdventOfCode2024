@@ -52,7 +52,7 @@ with open('task13_input.txt') as f:
         eq1 = Equation(a1,b1,c1 + const)
         eq2 = Equation(a2,b2,c2 + const)
         (btnA, btnB) = solve_equation_system(eq1, eq2)
-        if int(btnA) != btnA or int(btnB) != btnB or (part == 1 and (btnA > 100 or btnB > 100)):
+        if int(btnA) != btnA or int(btnB) != btnB:
             continue # no solution
 
         answer += btnA*3 + btnB
