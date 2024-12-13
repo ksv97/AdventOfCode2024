@@ -33,6 +33,8 @@ def parse_XY(patternX, patternY, line):
     return int(X[0]), int(Y[0])
 
 answer = 0
+part = int(input('1 or 2: '))
+const = 0 if part == 1 else 10000000000000
 with open('task13_input.txt') as f:
     patternX = r"X\+\d+"
     patternY = r"Y\+\d+"
@@ -47,10 +49,10 @@ with open('task13_input.txt') as f:
         (a1, a2) = parse_XY(patternX, patternY, line_btnA)
         (b1, b2) = parse_XY(patternX, patternY, line_btnB)
         (c1, c2) = parse_XY(pattern_prizeX, pattern_prizeY, line_prize)
-        eq1 = Equation(a1,b1,c1)
-        eq2 = Equation(a2,b2,c2)
+        eq1 = Equation(a1,b1,c1 + const)
+        eq2 = Equation(a2,b2,c2 + const)
         (btnA, btnB) = solve_equation_system(eq1, eq2)
-        if int(btnA) != btnA or int(btnB) != btnB or btnA > 100 or btnB > 100:
+        if int(btnA) != btnA or int(btnB) != btnB or (part == 1 and (btnA > 100 or btnB > 100)):
             continue # no solution
 
         answer += btnA*3 + btnB
